@@ -1,0 +1,27 @@
+{
+  "name": "courses_2022",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint . --ext .js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/xolibas/courses-2022.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xolibas/courses-2022/issues"
+  },
+  "homepage": "https://github.com/xolibas/courses-2022#readme",
+  "devDependencies": {
+    "eslint": "^8.29.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.11",
+    "prettier": "^2.8.1"
+  }
+}
