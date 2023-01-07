@@ -2,15 +2,13 @@ const Router = require('express');
 
 const router = new Router();
 const articles = require('../controllers/article.controller');
+const validateJWT = require('../middlewares/validateJWT');
+const validateArticle = require('../middlewares/validators/article.validate');
 
-router.post('/', articles.create);
-
-router.put('/:id', articles.update);
+router.post('/', validateJWT, validateArticle, articles.create);
 
 router.get('/', articles.getAll);
 
-router.get('/:id', articles.get);
-
-router.delete('/:id', articles.delete);
+router.delete('/:id', validateJWT, articles.deleteById);
 
 module.exports = router;

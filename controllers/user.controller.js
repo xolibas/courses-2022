@@ -25,10 +25,10 @@ const login = async (req, res) => {
 };
 
 const getProfile = async (req, res) => {
-  const { id } = req.body;
+  const { userId } = req.body;
 
   try {
-    const user = await userService.getProfile(id);
+    const user = await userService.getProfile(userId);
     return res.status(200).json({ user });
   } catch (err) {
     return res.status(400).json({ message: err.message });

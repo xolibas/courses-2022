@@ -11,7 +11,7 @@ const validateJWT = (req, res, next) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    req.body.id = decoded.id;
+    req.body.userId = decoded.id;
 
     return next();
   } catch (err) {

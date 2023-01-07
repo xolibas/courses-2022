@@ -6,7 +6,7 @@ const validateJWT = require('../middlewares/validateJWT');
 
 router.post('/', validateJWT, categories.create);
 
-router.get('/', validateJWT, categories.getAll);
+router.get('/', categories.getAll);
 
 router.delete('/:id', validateJWT, categories.deleteById);
 
