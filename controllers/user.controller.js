@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken');
 const userService = require('../services/user.service');
 
 const register = async (req, res) => {
