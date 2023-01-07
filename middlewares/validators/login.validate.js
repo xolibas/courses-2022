@@ -14,8 +14,6 @@ const validateLogin = async (req, res, next) => {
   try {
     await schema.validateAsync(userInfo);
 
-    console.log(req.body);
-
     return next();
   } catch (err) {
     return res.status(400).json({ message: err.message });
