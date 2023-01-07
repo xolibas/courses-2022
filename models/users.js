@@ -1,9 +1,8 @@
 const User = (sequelize, DataTypes) => {
   const UserModel = sequelize.define('users', {
-    displayName: DataTypes.STRING,
+    username: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    image: DataTypes.STRING,
   });
 
   return UserModel;

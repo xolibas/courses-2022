@@ -2,19 +2,14 @@ const Router = require('express');
 
 const router = new Router();
 const users = require('../controllers/user.controller');
+const validateJWT = require('../middlewares/validateJWT');
+const validateLogin = require('../middlewares/validators/login.validate');
+const validateRegister = require('../middlewares/validators/register.validate');
 
-router.post('/login', users.login);
+router.post('/login', validateLogin, users.login);
 
-router.post('/register', users.register);
+router.post('/register', validateRegister, users.register);
 
-router.put('/:id', users.update);
-
-router.get('/profile', users.getProfile);
-
-router.get('/:id', users.get);
-
-router.get('/', users.getAll);
-
-router.delete('/:id', users.delete);
+router.get('/profile', validateJWT, users.getProfile);
 
 module.exports = router;
