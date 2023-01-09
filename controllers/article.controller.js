@@ -11,6 +11,18 @@ const create = async (req, res) => {
   }
 };
 
+const update = async (req, res) => {
+  const { id } = req.params;
+  const postInfo = req.body;
+
+  try {
+    const createdPost = await postService.update(id, postInfo);
+    return res.status(201).json(createdPost);
+  } catch (err) {
+    return res.status(400).json({ message: err.message });
+  }
+};
+
 const getAll = async (req, res) => {
   const posts = await postService.getAll();
   return res.status(200).json(posts);
@@ -33,4 +45,5 @@ module.exports = {
   create,
   getAll,
   deleteById,
+  update,
 };

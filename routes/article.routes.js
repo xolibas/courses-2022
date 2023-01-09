@@ -11,4 +11,6 @@ router.get('/', articles.getAll);
 
 router.delete('/:id', validateJWT, articles.deleteById);
 
+router.put('/:id', validateJWT, validateArticle, articles.update);
+
 module.exports = router;
