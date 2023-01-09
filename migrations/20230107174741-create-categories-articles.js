@@ -6,11 +6,15 @@ module.exports = {
         type: Sequelize.INTEGER,
         foreignKey: true,
         allowNull: false,
+        references: { model: 'articles', key: 'id' },
+        onDelete: 'cascade',
       },
       categoryId: {
         type: Sequelize.INTEGER,
         foreignKey: true,
         allowNull: false,
+        references: { model: 'categories', key: 'id' },
+        onDelete: 'cascade',
       },
     });
   },

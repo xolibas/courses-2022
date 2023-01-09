@@ -18,6 +18,8 @@ module.exports = {
         allowNull: false,
         foreignKey: true,
         type: Sequelize.INTEGER,
+        references: { model: 'users', key: 'id' },
+        onDelete: 'no action',
       },
       status: {
         allowNull: false,
