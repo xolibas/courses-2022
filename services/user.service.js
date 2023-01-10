@@ -1,17 +1,19 @@
 const { compare, genSalt, hash } = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const db = require('../models/index');
+const User = require('../models/mongo/users');
+// const db = require('../models/postgresql/index');
 
 require('dotenv').config();
 
-const User = db.users;
+// const User = db.users;
 
 const generateJwt = (id, email) => {
   return jwt.sign({ id, email }, process.env.JWT_SECRET);
 };
 
 const register = async (dto) => {
-  const emailFound = await User.findOne({ where: { email: dto.email } });
+  const emailFound = await User.findOne({ email: dto.email });
+  // const emailFound = await User.findOne({ where: { email: dto.email } });
   if (emailFound) {
     throw new Error('User already registered');
   }
@@ -30,8 +32,11 @@ const register = async (dto) => {
 };
 
 const login = async ({ email, password }) => {
-  const user = await User.findOne({ where: { email } });
-  if (!user) throw new Error('User with such email or login not exists');
+  const user = await User.findOne({
+    email,
+  });
+  // const user = await User.findOne({ where: { email } });
+  if (!user) throw new Error('User with such email not exists');
 
   const isValidPassword = await compare(password, user.password);
 
@@ -41,7 +46,8 @@ const login = async ({ email, password }) => {
 };
 
 const getProfile = async (id) => {
-  const user = await User.findOne({ where: { id } });
+  const user = await User.findOne({ _id: id });
+  // const user = await User.findOne({ where: { id } });
   return user;
 };
 
